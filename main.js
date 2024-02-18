@@ -4,16 +4,51 @@ const endGameStatus = document.getElementById('endGameStatus')
 const playerOne = 'X'; const playerTwo = 'O';
 let playerTurn = playerOne;
 
-cells.forEach(cell= {
-    celladdEventListener('click', playGame { once: true }) 
+const winningPatterns = [
+  [0, 1, 2]
+  [3, 4, 5]
+  [6, 7, 8]
+  [0, 3, 6]
+  [1, 4, 7]
+  [2, 5, 8]
+  [0, 4, 8]
+  [2, 4, 8]
+]
+
+cells.forEach(cell=> {
+    cell.addEventListener('click', playGame );
  })
 
  function playGame (e) {
     e.target.innerHTML = playerTurn;
 
+    if (checkWin(playerTurn)) {
+      updateGameStatus("wins" + playerTurn);
+      return endgame();
+    } else if (checkDraw()) {
+      updateGameStatus("draw");
+      return endgame();
+    }
+
     updateGameStatus(playerTurn);
     playerTurn == playerOne ? playerTurn = playerTwo : playerTurn = playerOne;
+    // [0, 1, 2]
+    // [X, X, X]
+    // [2, 5, 8]
+    // [0, 0, 0]
  }
+function checkWin(playerTurn) {
+  return winningPatterns.some(combinations => {
+  return combination.every(index => {
+    return cells[index].innerHTML == playerTurn;
+   });
+  });
+}
+function checkDraw() {
+  return [...cells].every(cell=> {
+    return cell.innerHTML == playerOne  cell.innerHTML == playerTwo;
+  });
+}
 
  function updateGameStatus(status) {
     let statusText;
@@ -39,3 +74,6 @@ cells.forEach(cell= {
     gameStatus.innerHTML = statusText;
     EndgameStatus.innerHTML = statusText;
  }
+
+ function endgame () { document.getElementById('gameEnd').style.display = "block" }
+ function reloadGame () { window.location.reload() }
