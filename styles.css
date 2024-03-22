@@ -1,49 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Fruktur&display=swap");
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {font-family: monospace;}
-h1 { text-align: center }
+body {
+  font-family: monospace;
+  margin: 37px auto;
+  height: 100vh;
+  background: url("image/ai-generated-8334800_1280.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1,
+h2,
+#scores {
+  text-align: center;
+  color: white;
+  font-family: "Fruktur", system-ui;
+  font-size: 30px;
+  margin-top: 10px;
+  text-shadow: 0px 1px 3px black;
+}
+
+img {
+  top: 25%;
+  left: 9%;
+  width: 18%;
+  position: absolute;
+}
 
 .cell {
-    height: 100px;
-    width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80px;
-    border-right: 2px solid black;
-    border-bottom: solid black;
-    cursor: pointer;
+  height: 116px;
+  width: 116px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 90px;
+  border-right: 2px solid black;
+  border-bottom: solid black;
+  cursor: pointer;
 }
-.cell:nth-child(3n) {border-right: none}
-.cell:nth-child(6) ~ .cell {border-bottom: none;}
+.cell:nth-child(3n) {
+  border-right: none;
+}
+.cell:nth-child(6) ~ .cell {
+  border-bottom: none;
+}
 
 .board {
-    width: 300px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 4rem;
+  width: 348px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto;
+  background-color: white;
+  box-shadow: 0px 1px 8px 3px black;
 }
 
-.white {color: white;}
+.white {
+  color: white;
+  text-transform: uppercase;
+  text-shadow: -2px 1px 3px black;
+}
 
-#gameEnd{
-    position: fixed;
+#gameEnd {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("image/bgfin.png");
+  background-color: black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  object-fit: contain;
+}
+
+#gameEnd p,
+#gameEnd input {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 10px 20px;
+  border-radius: 11px;
+  transform: translate(-45%, -45%);
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+#gameEnd input:hover {
+  color: white;
+  background: #89a02c;
+}
+
+#gameEnd p {
+  margin-top: 5rem;
+  font-size: 30px;
+  color: #f5ffb4;
+  font-family: "Fruktur", system-ui;
+}
+
+@media (max-width: 773px) {
+  img {
     display: none;
-    width: 100%;
-    height: 100%;
-    top: 0; right: 0; bottom: 0; left: 0;
-    background-color: black;
+  }
+  #gameEnd p {
+    font-size: 23px;
+  }
 }
-
-#gameEnd p, #gameEnd input {
-    position: fixed;
-    top: 45%; left: 45%;
-    transform: translate(-45%, -45%);
-    text-align: center;
-}
-
-#gameEnd p {margin-top: 2rem;}
